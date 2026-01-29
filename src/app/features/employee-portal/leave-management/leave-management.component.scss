@@ -1,0 +1,79 @@
+.employee-page {
+  padding: 24px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  h1,
+  h2 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--neutral-900);
+  }
+}
+
+.page-header.secondary {
+  margin-top: 32px;
+}
+
+.form-card,
+.table-card {
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.status-chip {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.status-chip.pending {
+  background-color: #fff4cc;
+  color: #8a6d1f;
+}
+
+.status-chip.approved {
+  background-color: #d9f5e7;
+  color: #1b6e3b;
+}
+
+.status-chip.rejected {
+  background-color: #fde2e2;
+  color: #9b1c1c;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 24px 0;
+  color: var(--neutral-600);
+
+  mat-icon {
+    color: var(--neutral-400);
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .employee-page {
+    padding: 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

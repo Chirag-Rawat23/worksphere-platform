@@ -1,0 +1,49 @@
+.employee-page {
+  padding: 24px;
+}
+
+.page-header {
+  margin-bottom: 16px;
+
+  h1 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--neutral-900);
+  }
+}
+
+.action-card,
+.table-card {
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 20px;
+}
+
+.action-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.notice {
+  margin-top: 12px;
+  color: var(--neutral-700);
+  font-weight: 500;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 24px 0;
+  color: var(--neutral-600);
+
+  mat-icon {
+    color: var(--neutral-400);
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .employee-page {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,144 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+
+  // Subtle pattern overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  box-shadow: var(--shadow-xl);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  background-color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .logo-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--neutral-900);
+    text-align: center;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 32px 16px;
+}
+
+mat-card-subtitle {
+  text-align: center;
+  color: var(--neutral-600);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+mat-card-content {
+  padding: 24px 32px 32px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.login-button {
+  width: 100%;
+  height: 48px;
+  font-size: 1rem;
+  margin-top: 8px;
+  position: relative;
+
+  .spinner {
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+.login-info {
+  margin-top: 24px;
+  padding: 16px;
+  background-color: var(--neutral-100);
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--neutral-600);
+  border: 1px solid var(--neutral-200);
+
+  p {
+    margin: 4px 0;
+    line-height: 1.6;
+  }
+
+  strong {
+    color: var(--neutral-900);
+    font-weight: 600;
+  }
+}
+
+.credential-details {
+  margin-top: 12px;
+}
+
+.divider {
+  border-top: 1px solid var(--neutral-200);
+  margin: 12px 0;
+}
+
+// Responsive design
+@media (max-width: 600px) {
+  .login-card {
+    max-width: 100%;
+  }
+
+  mat-card-header {
+    padding: 24px 24px 12px;
+  }
+
+  mat-card-content {
+    padding: 20px 24px 24px;
+  }
+}

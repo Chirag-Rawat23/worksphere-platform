@@ -1,0 +1,230 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--neutral-50);
+}
+
+.sticky-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+  background: var(--primary-color) !important;
+  
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 64px;
+  
+  flex-shrink: 0;
+  border-bottom: 2px solid var(--primary-dark);
+}
+
+.app-title-container {
+  margin-right: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  user-select: none;
+  color: white;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  
+  &:hover {
+    opacity: 0.95;
+  }
+  
+  -webkit-text-stroke: 0.01em transparent;
+  text-shadow: 0 0 0.01em rgba(255, 255, 255, 0.1);
+}
+
+.app-logo {
+  width: 28px;
+  height: 28px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  a.mat-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: auto;
+    padding: 0 20px;
+    height: 64px;
+    border-radius: 0;
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      color: white;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        right: 20px;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 2px 2px 0 0;
+      }
+    }
+    
+    &.active {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: white;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        right: 20px;
+        height: 3px;
+        background-color: white;
+        border-radius: 2px 2px 0 0;
+      }
+      
+      mat-icon {
+        color: white;
+      }
+    }
+    
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  color: rgba(255, 255, 255, 0.95);
+  padding: 6px 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(10px);
+
+  .user-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: 0;
+  background-color: var(--neutral-50);
+  min-height: calc(100vh - 64px);
+}
+
+@media (max-width: 768px) {
+  .sticky-toolbar {
+    padding: 0 8px;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 64px;
+  }
+  
+  .app-title {
+    font-size: 1.1rem;
+    margin-right: 16px;
+  }
+  
+  .nav-links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    a.mat-button {
+      height: 48px;
+      padding: 0 12px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+      
+      span {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  .spacer {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .nav-links {
+    a.mat-button {
+      padding: 0 12px;
+      
+      span {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a.mat-button:focus {
+  outline: 2px solid #ffd54f;
+  outline-offset: -2px;
+}
+
+@keyframes activePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.nav-links a.mat-button.active {
+  animation: activePulse 0.3s ease;
+}

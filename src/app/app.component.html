@@ -1,0 +1,78 @@
+<div class="app-container">
+  <!-- Sticky Navigation Bar -->
+  <mat-toolbar color="primary" class="sticky-toolbar" *ngIf="showToolbar">
+    <!-- Clickable Title -->
+    <div class="app-title-container">
+      <span class="app-title" routerLink="/dashboard">
+        <mat-icon class="app-logo">business_center</mat-icon>
+        WorkSphere
+      </span>
+    </div>
+    
+    <!-- Navigation Links -->
+    <nav class="nav-links" *ngIf="currentUser$ | async as user">
+      <a mat-button routerLink="/dashboard" routerLinkActive="active" 
+         [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>home</mat-icon>
+        Home
+      </a>
+      <a mat-button routerLink="/employees" routerLinkActive="active" *ngIf="isAdminRole(user.role) || isEmployeeRole(user.role)">
+        <mat-icon>people</mat-icon>
+        Employees
+      </a>
+      <a mat-button routerLink="/departments" routerLinkActive="active" *ngIf="isAdminRole(user.role)">
+        <mat-icon>business</mat-icon>
+        Departments
+      </a>
+      <a mat-button routerLink="/candidates" routerLinkActive="active" *ngIf="isAdminRole(user.role)">
+        <mat-icon>work</mat-icon>
+        Candidates
+      </a>
+      <a mat-button routerLink="/salaries" routerLinkActive="active" *ngIf="isAdminRole(user.role)">
+        <mat-icon>attach_money</mat-icon>
+        Salaries
+      </a>
+      <a mat-button routerLink="/dashboard/leave-requests" routerLinkActive="active" *ngIf="isAdminRole(user.role)">
+        <mat-icon>event_available</mat-icon>
+        Leave Requests
+      </a>
+      <a mat-button routerLink="/employee/leave" routerLinkActive="active" *ngIf="isEmployeeRole(user.role)">
+        <mat-icon>event_available</mat-icon>
+        Leave
+      </a>
+      <a mat-button routerLink="/employee/attendance" routerLinkActive="active" *ngIf="isEmployeeRole(user.role)">
+        <mat-icon>schedule</mat-icon>
+        Attendance
+      </a>
+      <a mat-button routerLink="/employee/payroll" routerLinkActive="active" *ngIf="isEmployeeRole(user.role)">
+        <mat-icon>receipt</mat-icon>
+        Payroll
+      </a>
+      <a mat-button routerLink="/employee/announcements" routerLinkActive="active" *ngIf="isEmployeeRole(user.role)">
+        <mat-icon>campaign</mat-icon>
+        Announcements
+      </a>
+    </nav>
+
+    <!-- Optional: User menu or additional controls -->
+    <div class="spacer"></div>
+    <div class="user-info" *ngIf="currentUser$ | async as user">
+      <span class="user-name">{{user.name}}</span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="onLogout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

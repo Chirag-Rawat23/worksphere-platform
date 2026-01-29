@@ -1,0 +1,29 @@
+.employee-page {
+  padding: 24px;
+}
+
+.page-header {
+  margin-bottom: 16px;
+
+  h1 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--neutral-900);
+  }
+}
+
+.announcement-list {
+  display: grid;
+  gap: 16px;
+}
+
+.announcement-card {
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+  .employee-page {
+    padding: 16px;
+  }
+}

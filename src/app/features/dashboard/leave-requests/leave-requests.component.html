@@ -1,0 +1,65 @@
+<div class="leave-requests-container">
+  <div class="page-header">
+    <h1>Leave Requests & History</h1>
+    <p>All statuses (pending, approved, rejected)</p>
+  </div>
+
+  <mat-card class="table-card">
+    <mat-card-content>
+      <table mat-table [dataSource]="adminLeaveRequests" class="mat-elevation-z0">
+        <ng-container matColumnDef="employee">
+          <th mat-header-cell *matHeaderCellDef>Employee</th>
+          <td mat-cell *matCellDef="let request">{{request.email}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef>Start</th>
+          <td mat-cell *matCellDef="let request">{{request.startDate | date:'MMM d, y'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="endDate">
+          <th mat-header-cell *matHeaderCellDef>End</th>
+          <td mat-cell *matCellDef="let request">{{request.endDate | date:'MMM d, y'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef>Reason</th>
+          <td mat-cell *matCellDef="let request">{{request.reason}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let request">
+            <mat-chip class="status-chip" [ngClass]="request.status.toLowerCase()">
+              {{request.status}}
+            </mat-chip>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let request">
+            <button mat-stroked-button color="primary"
+                    (click)="updateLeaveStatus(request, 'Approved')"
+                    [disabled]="request.status === 'Approved'">
+              Approve
+            </button>
+            <button mat-stroked-button color="warn"
+                    (click)="updateLeaveStatus(request, 'Rejected')"
+                    [disabled]="request.status === 'Rejected'">
+              Reject
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div class="empty-state" *ngIf="adminLeaveRequests.length === 0">
+        <mat-icon>event_available</mat-icon>
+        <p>No leave requests yet</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
