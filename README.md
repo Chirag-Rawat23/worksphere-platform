@@ -1,7 +1,7 @@
 # WorkSphere
 Unified Workforce Management Platform
 
-WorkSphere is a full‑stack HR & Employee Management SaaS built with Angular and ASP.NET Core.  
+WorkSphere is a full‑stack HR & Employee Management built with Angular and ASP.NET Core.  
 It covers HR workflows (employees, departments, candidates, salaries, payroll) plus employee self‑service (leave, attendance, payroll, announcements).
 
 ## Features
