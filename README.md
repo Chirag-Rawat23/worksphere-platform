@@ -52,7 +52,7 @@ App runs at: `http://localhost:4200`
 
 ## Demo
 
-Live demo URL will be added soon.
+https://worksphere.chiragrawat.ca/login
 
 ## Configuration
 
